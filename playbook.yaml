@@ -1,0 +1,41 @@
+    - name: Update facts about system type
+      setup:
+
+    - name: Update packages based on distribution
+      block:
+        - name: Update RedHat systems
+          yum:
+            name: "*"
+            state: latest
+          when: ansible_distribution == "RedHatEnterpriseServer"
+          tags: redhat
+
+        - name: Update Ubuntu systems
+          apt:
+            name: "*"
+            state: latest
+          when: ansible_distribution == "Ubuntu"
+          tags: ubuntu
+
+        - name: Update SUSE systems
+          zypper:
+            name: "*"
+            state: latest
+          when: ansible_distribution == "SUSE"
+          tags: suse
+
+        - name: check to see if we need a reboot
+          command: needs-restarting -r
+          register: result
+          ignore_errors: yes
+
+        - name: display result
+          debug:
+           var: result.rc
+
+        - name: Reboot Server if Necessary
+          command: shutdown -r now "Ansible Updates Triggered"
+          become: true
+          async: 30
+          poll: 0
+          when: result.rc == 1
