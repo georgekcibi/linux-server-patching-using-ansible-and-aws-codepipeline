@@ -11,3 +11,6 @@ artifacts:
   files:
     - install.sh
     - appspec.yml
+    - ansible.cfg
+    - hosts
+    - playbook.yaml
