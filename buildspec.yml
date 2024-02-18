@@ -6,7 +6,7 @@ phases:
       - sudo apt-add-repository ppa:ansible/ansible
       - apt update
       - sudo apt install -y ansible
-      - ls -al /codebuild/output/artifacts
+      - ls -al /codebuild/output/srcDownload
 artifacts:
   files:
     - install.sh
