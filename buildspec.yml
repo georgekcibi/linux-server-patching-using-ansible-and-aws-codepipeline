@@ -6,6 +6,7 @@ phases:
       - sudo apt-add-repository ppa:ansible/ansible
       - apt update
       - sudo apt install -y ansible
+      - sudo ls -al /codebuild/output/src2915263915/src/github.com/georgekcibi/linux-server-patching-using-ansible-and-aws-codepipeline
 
 artifacts:
   files:
