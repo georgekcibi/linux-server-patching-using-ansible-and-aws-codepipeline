@@ -4,8 +4,8 @@ phases:
     commands:
       - apt-get update
       - sudo apt-add-repository ppa:ansible/ansible
-      - apt-get update
-      - sudo apt install ansible
+      - apt update
+      - sudo apt install -y ansible
 
 artifacts:
   files:
