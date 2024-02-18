@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - apt-get update
+      - sudo apt-add-repository ppa:ansible/ansible"
+      - apt-get update
+      - sudo apt install ansible
+
+artifacts:
+  files:
+    - install.sh
+    - appspec.yml
